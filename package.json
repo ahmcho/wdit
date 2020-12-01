@@ -1,0 +1,48 @@
+{
+  "name": "wdit",
+  "version": "0.0.1",
+  "description": "Pick a place, country you visited or wanted to visit on map and share it with your friends",
+  "main": "index.js",
+  "scripts": {
+    "client-install": "npm install --prefix client",
+    "start": "node server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "dev-conf": "env-cmd -f ./config/dev.env nodemon server.js",
+    "test-conf": "env-cmd -f ./config/test.env jest --watch --runInBand"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahmcho/wdit.git"
+  },
+  "author": "ahmcho",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ahmcho/wdit/issues"
+  },
+  "homepage": "https://github.com/ahmcho/wdit#readme",
+  "dependencies": {
+    "@mapbox/mapbox-sdk": "^0.11.0",
+    "@sendgrid/mail": "^7.2.2",
+    "bcryptjs": "^2.4.3",
+    "chalk": "^4.1.0",
+    "concurrently": "^4.0.1",
+    "compression": "^1.7.4",
+    "is-empty": "^1.2.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.26",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "validator": "^13.1.1"
+  },
+  "devDependencies": {
+    "env-cmd": "^10.1.0",
+    "jest": "^26.1.0",
+    "supertest": "^4.0.2"
+  }
+}
