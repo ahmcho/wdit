@@ -7,7 +7,7 @@ const TripSchema = new mongoose.Schema({
         trim: true,
         validate: {
             validator: function(value) {
-                return !v.includes('true') && !v.includes('false');
+                return !value.includes('true') && !value.includes('false');
             },
             message: props => `${props.value} is not a string value!`
         }
@@ -21,7 +21,7 @@ const TripSchema = new mongoose.Schema({
         required: false,
         validate:{
             validator: function(value) {
-                return !v.includes('true')
+                return !value.includes('true')
             },
             message: props => `${props.value} is not a string value!`
         }

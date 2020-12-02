@@ -15,10 +15,13 @@ const auth = async (req,res, next) => {
                     _id: token._id
                 })
                 req.user = user;
+                next();
             } catch (error) {
-                next(error);
+                res.status(401).send({
+                    error: true,
+                    message: 'Unauthorized access!'
+                })
             }
-            next();
     })(req,res,next);
 }
 module.exports = auth;

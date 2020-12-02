@@ -4,7 +4,7 @@ const passport = require("passport");
 const cors = require("cors");
 
 const users = require('./routes/api/users');
-
+const trips = require('./routes/api/trips');
 const app = express();
 
 app.use(cors());
@@ -32,6 +32,7 @@ require("./config/passport")(passport);
 
 // Routes
 app.use("/api/users", users);
+app.use("/api/trips", trips);
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Backend is running on port ${port} !`));
