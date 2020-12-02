@@ -146,13 +146,13 @@ module.exports = {
                     await user.save();
                     res.send({
                         error: false,
-                        message: 'Password changed successfully'
+                        message: 'Password update was successful. We\'ve sent you a confirmation email as well.'
                     });
                     sendPasswordChangedEmail(user.email)
                     return next();
                 }
             }
-            res.status(404).send({
+            return res.status(404).send({
                 error: true,
                 message: 'Reset token is wrong or expired. Please, request a new token.'
             })
