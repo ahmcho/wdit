@@ -27,11 +27,11 @@ const UserSchema = new Schema({
   },
   age: {
       type: Number,
-      default: 0,
       validate(value){
           if(value < 0){
             throw new Error('Age must be a positive number.')
-          } else if(value < 13){
+          } 
+          if(value < 13){
               throw new Error('Sorry, you are too young to use this service')
           }
       }
