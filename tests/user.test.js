@@ -4,16 +4,16 @@ const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 const { userOneId, userOne, userTwo, userTwoId, setupDatabase } = require('./fixtures/db');
 
-// let token;
-// beforeAll(async () => {
-//     const response = await request(app)
-//                                 .post('/api/users/login')
-//                                 .send({
-//                                     email: userOne.email,
-//                                     password: userOne.password
-//                                 })
-//     token = response.body.data;
-// })
+let token;
+beforeEach(async () => {
+    const response = await request(app)
+                                .post('/api/users/login')
+                                .send({
+                                    email: userOne.email,
+                                    password: userOne.password
+                                })
+    token = response.body.data;
+})
 
 
 beforeEach(setupDatabase);
@@ -41,13 +41,8 @@ test('Should not signup user with invalid name/email/password', async () => {
 })
 
 test('Should login existing user', async () => {
-    const response = await request(app).post('/api/users/login').send({
-        email: userTwo.email,
-        password: userTwo.password
-    }).expect(200);
-    const token = response.body.data;
     const userDecoded = await jwt.decode(token.split('Bearer ')[1], process.env.JWT_SECRET);
-    const user = await User.findById(userTwoId);
+    const user = await User.findById(userOneId);
     expect(userDecoded.name).toBe(user.name);
 });
 
@@ -59,12 +54,6 @@ test('Should not login non-existing user', async () =>{
 })
 
 test('Should get profile for user', async () => {
-    const response = await request(app).post('/api/users/login').send({
-        email: userOne.email,
-        password: userOne.password
-    }).expect(200);
-    //Get token
-    const token = response.body.data;
     await request(app)
             .get('/api/users/me')
             .set('Authorization',token)
@@ -80,13 +69,6 @@ test('Should not get profile for unauthenciated user', async () => {
 });
 
 test('Should delete user profile', async () => {
-    const response = await request(app).post('/api/users/login').send({
-        email: userOne.email,
-        password: userOne.password
-    }).expect(200);
-    //Get token
-    const token = response.body.data;
-
     await request(app)
         .delete('/api/users/me')
         .set('Authorization',token)
@@ -116,11 +98,11 @@ test('Should update valid user fields', async () => {
         password: userTwo.password
     }).expect(200);
     //Get token
-    const token = response.body.data;
+    const anotherToken = response.body.data;
 
     await request(app)
                 .patch('/api/users/me')
-                .set('Authorization', token)
+                .set('Authorization', anotherToken)
                 .send({
                     name: 'Administrator'
                 }).expect(200);
