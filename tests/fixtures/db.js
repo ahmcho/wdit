@@ -33,7 +33,7 @@ const tripOne = {
     },
     "rating": 1,
     "_id": tripOneId,
-    "description": "Visited Marcesia",
+    "description": "Visited Chaushescu",
     "location": "Chisinau,Moldova",
     "owner": userOne._id,
 }
@@ -65,7 +65,7 @@ const tripThree = {
     },
     "rating": 0,
     "_id": tripThreeId,
-    "description": "Visited Elchin",
+    "description": "Visited ETH Zurich",
     "location": "Zurich,Switzerland",
     "owner": userOne._id,
 }
