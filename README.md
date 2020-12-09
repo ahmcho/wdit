@@ -1,7 +1,7 @@
 ### WheDIT
 WhereDidITravel is a service which lets you to display places you visited or wanted to visit on a global map. Users can share a link with all their trips and have each of those be displayed as markers on a map.
 ### Tech
-This service is built using following tech:
+This backend is built using following tech:
 * [bcryptjs]
 * [node.js]
 * [express]
@@ -12,7 +12,6 @@ This service is built using following tech:
 * [jest]
 * [supertest]
 * [mapbox]
-* [React]
 
    [node.js]: <http://nodejs.org>
    [express]: <http://expressjs.com>
@@ -25,4 +24,3 @@ This service is built using following tech:
    [jest]: <https://jestjs.io/>
    [supertest]: <https://www.npmjs.com/package/supertest>
    [mapbox]: <https://www.mapbox.com/>
-   [React]: <https://reactjs.org/>
