@@ -17,7 +17,7 @@ const {
 
 // ------ Routes ------ //
 router.get('/me', auth, getUser)
-router.get('/:id/trips', getUserTrips);
+router.get('/:id/trips',auth, getUserTrips);
 router.post('/register', createUser)
 router.post('/login', loginUser);
 router.patch('/me',  auth, updateUser)

@@ -53,7 +53,7 @@ module.exports = {
                 name: user.name
             }
             //Send token in response
-            jwt.sign(payload, process.env.JWT_SECRET, {expiresIn: 31556926}, (err, token) => {
+            jwt.sign(payload, process.env.JWT_SECRET, {algorithm:"HS256",expiresIn: 31556926}, (err, token) => {
                 res.status(200).send({ 
                     error: false,
                     message:'Logged in',
