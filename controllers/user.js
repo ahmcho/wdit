@@ -113,7 +113,8 @@ module.exports = {
     async forgotPassword(req,res,next){
         const token = await crypto.randomBytes(20).toString('hex');
         const { email } = req.body;
-        const { host } = req.headers;
+        const  host  = process.env.PROD_URL
+        
         const user = await User.findOne({ email });
         
         if (!user) {
